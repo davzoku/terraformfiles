@@ -1,0 +1,1 @@
+echo 'aws_iam_user.cloud[6].name' | terraform console

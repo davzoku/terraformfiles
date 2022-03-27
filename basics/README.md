@@ -33,7 +33,7 @@ terraform graph | dot -Tsvg > graph.svg
 - terraform init : initialize your code to download the requirements mentioned in your code.
 - terraform plan : review changes and choose whether to simply accept them.
 - terraform apply : accept changes and apply them against real infrastructure.
-- terraform show
+- terraform state show / terraform state list
 - terraform destroy : destroy all your created infrastructure.
 
 ## Mutable vs Immutable Infrastructure
@@ -122,6 +122,30 @@ terraform {
 ## Data Sources
 
 Data sources allow Terraform to use information _defined outside of Terraform_, defined by another separate Terraform configuration, or modified by functions.
+
+## Workspaces
+
+Terraform starts with a single workspace named "default".
+
+Named workspaces allow conveniently switching between multiple instances of a single configuration within its single backend.
+
+A common use for multiple workspaces is to create a parallel, distinct copy of a set of infrastructure in order to test a set of changes before modifying the main production infrastructure. For example, a developer working on a complex set of infrastructure changes might create a new temporary workspace in order to freely experiment with changes without affecting the default workspace. Non-default workspaces are often related to feature branches in version control.
+
+```bash
+# list workspace
+terraform workspace list
+
+# create new workspace
+terraform workspace new <WORKSPACE_NAME>
+
+# switch workspace
+terraform workspace select <WORKSPACE_NAME>
+
+```
+
+To get the name of the terraform workspace, we can use `terraform.workspace`.
+
+When using multiple workspaces, the state files are stored in directories inside `terraform.tfstate.d`.
 
 ## References
 
