@@ -667,7 +667,7 @@ Interacting with Vault from Terraform causes any secrets that you read and write
 
 Sentinel is an embedded **policy-as-code** framework integrated with the HashiCorp Enterprise products. It enables fine-grained, logic-based policy decisions, and can be extended to use information from external sources.
 
-Policies are checked when a run is performed,** after the terraform plan but before it can be confirmed or the terraform apply is executed.**
+Policies are checked when a run is performed, **after the terraform plan but before it can be confirmed or the terraform apply is executed.**
 
 ## Best Practices
 
